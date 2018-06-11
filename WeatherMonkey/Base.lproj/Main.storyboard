@@ -32,7 +32,14 @@
                             <outlet property="delegate" destination="yMx-V8-E4b" id="NVW-GL-cLw"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Weather Monkey" id="qyK-yk-R0K"/>
+                    <navigationItem key="navigationItem" title="Weather Monkey" id="qyK-yk-R0K">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="s4L-MY-LII">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="addButtonTapped:" destination="yMx-V8-E4b" id="gR2-Rv-P0U"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="roj-73-wny" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

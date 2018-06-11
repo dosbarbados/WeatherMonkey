@@ -10,13 +10,19 @@ import UIKit
 
 class CityListController: UITableViewController {
     
-    let cityArray = ["Split", "London", "Peckham"]
+    var cityArray = ["Split", "London", "Peckham"]
+    
+    let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if let storedCities = defaults.array(forKey: "cityList") as? [String] {
+            cityArray = storedCities
+        }
         
-    //MARK - Tableview Datasource Methods
+        
+    // MARK - Tableview Datasource Methods
         
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -41,6 +47,35 @@ class CityListController: UITableViewController {
         
         tableView.deselectRow(at: indexPath, animated: true)
     }
-
+    
+    
+    //MARK - Add New Items
+    
+    @IBAction func addButtonTapped(_ sender: UIBarButtonItem) {
+        
+        let alert = UIAlertController(title: "New City", message: "", preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "Add", style: .default) { (action) in
+            
+            if let newCity = alert.textFields?[0].text {
+                self.cityArray.append(newCity)
+                
+                self.tableView.reloadData()
+                
+                self.defaults.set(self.cityArray, forKey: "cityList")
+            }
+            
+        }
+        
+        alert.addAction(action)
+        
+        alert.addTextField { (alertTextField) in
+            alertTextField.placeholder = "Insert new city"
+        }
+        
+        present(alert, animated: true, completion: nil)
+        
+    }
+    
 }
 
