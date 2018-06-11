@@ -9,15 +9,16 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
-import SwipeCellKit
+import SDWebImage
 
 class WeatherController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let URL = "http://api.worldweatheronline.com/premium/v1/weather.ashx"
+    let WEATHER_URL = "http://api.worldweatheronline.com/premium/v1/weather.ashx"
     let APIKEY = "a50e9ee8652548f7a96192627181106"
     
     var fiveDayWeather : [Weather]? = []
     
+    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var cityLabel: UILabel!
     
@@ -45,7 +46,7 @@ class WeatherController: UIViewController, UITableViewDelegate, UITableViewDataS
                                          "format" : "json",
                                          "num_of_days" : "5",
                                          "key" : APIKEY]
-        Alamofire.request(URL, method: .get, parameters: param).responseJSON {
+        Alamofire.request(WEATHER_URL, method: .get, parameters: param).responseJSON {
             response in
             
             if response.result.isSuccess {
@@ -64,7 +65,10 @@ class WeatherController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     func updateWeather(json: JSON) {
         
-        cityLabel.text = json["data"]["request"][0]["query"].stringValue
+        cityLabel.text = selectedCity
+        
+        let imageURL = json["data"]["current_condition"][0]["weatherIconUrl"][0]["value"].stringValue
+        self.imageView.sd_setImage(with: URL(string: imageURL))
         
         for index in 0...4 {
             
