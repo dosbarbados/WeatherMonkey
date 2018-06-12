@@ -88,7 +88,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.5725490196078431" green="0.69411764705882351" blue="0.9137254901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="EOE-wA-god" firstAttribute="trailing" secondItem="KoT-Kv-hFW" secondAttribute="trailing" constant="16" id="Hbu-8Z-n6W"/>
                             <constraint firstItem="KoT-Kv-hFW" firstAttribute="leading" secondItem="EOE-wA-god" secondAttribute="leading" constant="16" id="eEn-aq-6MN"/>
